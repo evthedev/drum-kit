@@ -1,0 +1,12 @@
+body {
+    color: blue;
+    font-family: arial, sans-serif;
+}
+
+.key {
+    font-size: 20px;
+}
+
+.playing {
+    transform: scale(1.5);
+}
