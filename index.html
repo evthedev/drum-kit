@@ -13,21 +13,40 @@
 
     </head>
     <body>
-        Hello drum kit
+        <p>Welcome to the javascript drum kit!</p>
+        <p>Hit the letter of the following keys to listen to the sounds</p>
         <div class="keys">
             <div data-key="68" class="key">
                 <kbd>D</kbd>
-                <span class="sound">kick</span>
+                <span class="sound">Boom</span>
             </div>
         </div>        
         
-        <audio src="../sounds/boom.wav" data-key="68"></audio>
+        <audio src="./sounds/boom.wav" data-key="68"></audio>
 
     </body>
     <script>
-        window.addEventListener('keydown', function(e){
-            console.log(e);
-        });
+
+        function playSound(e) {
+            const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+            const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
+            if(!audio) return;
+            audio.currentTime = 0;
+            audio.play();
+            key.classList.add('playing');
+        }
+
+        function removeTransition(e) {
+            if (e.propertyName !== 'transform') return;
+            console.log(e.propertyName);
+            console.log(this) // just to check what is 'this', in this case it is whatever got called against it
+            this.classList.remove('playing');
+        }
+
+        const keys = document.querySelectorAll('.key');
+        keys.forEach(key => key.addEventListener('transitionend', removeTransition));
+        window.addEventListener('keydown', playSound);
+
     </script>
 
 </html>

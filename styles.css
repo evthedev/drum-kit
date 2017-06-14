@@ -5,8 +5,16 @@ body {
 
 .key {
     font-size: 20px;
+    color: black;
+    background-color: rgba(0,0,0,0.1);
+    width: 60px;
+    padding: 5px;
+    border: 2px solid rgba(0,0,0,0.5);
+    text-align: center;
+    transition: 0.2s all ease-in-out;
 }
 
 .playing {
-    transform: scale(1.5);
+    transform: scale(1.1);
+    transition: 0.2s all ease-in-out;
 }
